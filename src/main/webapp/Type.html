@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" href="/images/smile.png" type="image/png">
+<title>СерёгаОГС</title>
+  <style>
+   body {
+    background: #ffffff;  /* Цвет фона и путь к файлу */
+    color: #000000; /* Цвет текста */
+   }
+  </style>
+</head>
+<body>
+<a href="http://www.lidea.by" target="_blank"><img src="images/logo_lidea.png" width="100" height="48"  alt="lidea" ></a>
+
+	<form name="forma1" action="MyServlet" method="GET">
+
+		<p>Выберите подключение и тип радиатора: </p>
+		<HR> 
+		 <p>ЛУ(нижнее подключение):</p>
+		 <table  align="center">
+		 <!-- 
+		 <tr><td><img  src="images/10.jpg" width="180" height="150" alt="lorem"></td>
+		 <td><img  src="images/11.jpg" width="180" height="150" alt="lorem"></td> 
+		 <td><img align="middle" src="images/10.jpg" width="180" height="150" alt="lorem"></td>
+		 <td><img align="middle" src="images/11.jpg" width="180" height="150" alt="lorem"></td>
+		 <td><img align="middle" src="images/10.jpg" width="180" height="150" alt="lorem"></td>
+		  -->
+		  </tr>
+		  <tr align="center" ><td> <input  type="radio" name="type" value="ЛУ 10"  checked>10 тип</td>
+			<td ><input  type="radio" name="type" value="ЛУ 11"> 11 тип</td>
+			<!-- 
+			<td ><input  type="radio" name="type" value="ЛУ 11"> 20 тип</td>
+			<td ><input  type="radio" name="type" value="ЛУ 11"> 21 тип</td>
+			<td ><input  type="radio" name="type" value="ЛУ 11"> 22 тип</td>
+			 -->
+		   </tr>
+		 </table>
+		   
+		<p >ЛK(боковое подключение):</p>
+			 <table  align="center">
+			 <!--
+		 <tr><td><img align="middle" src="images/10.jpg" width="180" height="150" alt="lorem"></td>
+		 <td><img align="middle" src="images/11.jpg" width="180" height="150" alt="lorem"></td>  
+		 <td><img align="middle" src="images/10.jpg" width="180" height="150" alt="lorem"></td>
+		 <td><img align="middle" src="images/11.jpg" width="180" height="150" alt="lorem"></td>
+		 <td><img align="middle" src="images/10.jpg" width="180" height="150" alt="lorem"></td>
+		 -->
+		  </tr>
+		  <tr align="center" ><td> <input  type="radio" name="type" value="LK 10"  checked>10 тип</td>
+		<td ><input  type="radio" name="type" value="LK 11"> 11 тип</td>
+		<!--  
+		<td ><input  type="radio" name="type" value="ЛК 11"> 20 тип</td>
+		<td ><input  type="radio" name="type" value="ЛК 11"> 21 тип</td>
+		<td ><input  type="radio" name="type" value="ЛК 11"> 22 тип</td>
+		-->
+		   </tr>
+		 </table>
+		 <HR> 
+		<p>Выберите размер(высота x длина), см:</p> 
+		 <p> <input type="radio" name="size" value="304" checked>30х40
+		 <input type="radio" name="size" value="305"> 30х50
+		 <!--  
+		 <input type="radio" name="size" value="306"> 30х60
+		 <input type="radio" name="size" value="307"> 30х70
+		 <input type="radio" name="size" value="308"> 30х80
+		 <input type="radio" name="size" value="309"> 30х90
+		 <input type="radio" name="size" value="310"> 30х100</p>
+		<p> <input type="radio" name="size" value="311"> 30х110
+		 <input type="radio" name="size" value="312"> 30х120
+		 <input type="radio" name="size" value="313"> 30х130
+		 <input type="radio" name="size" value="314"> 30х140
+		 <input type="radio" name="size" value="315"> 30х150
+		 <input type="radio" name="size" value="316"> 30х160
+		 <input type="radio" name="size" value="317"> 30х170
+		 <input type="radio" name="size" value="318"> 30х180
+		 <input type="radio" name="size" value="319"> 30х190     
+		<input type="radio" name="size" value="320"> 30х200</p>
+		<p> <input type="radio" name="size" value="322"> 30х220
+		 <input type="radio" name="size" value="324"> 30х240
+		 <input type="radio" name="size" value="326"> 30х260
+		 <input type="radio" name="size" value="328"> 30х280   
+		<input type="radio" name="size" value="330"> 30х300</p>
+		-->
+		<HR> 
+		 <p> <input type="radio" name="size" value="504" checked>50х40
+		 <input type="radio" name="size" value="505"> 50х50
+		 <!-- 
+		 <input type="radio" name="size" value="306"> 50х60
+		 <input type="radio" name="size" value="307"> 50х70
+		 <input type="radio" name="size" value="308"> 50х80
+		 <input type="radio" name="size" value="309"> 50х90
+		 <input type="radio" name="size" value="310"> 50х100</p>
+		<p> <input type="radio" name="size" value="311"> 50х110
+		 <input type="radio" name="size" value="312"> 30х120
+		 <input type="radio" name="size" value="313"> 30х130
+		 <input type="radio" name="size" value="314"> 30х140
+		 <input type="radio" name="size" value="315"> 30х150
+		 <input type="radio" name="size" value="316"> 30х160
+		 <input type="radio" name="size" value="317"> 30х170
+		 <input type="radio" name="size" value="318"> 30х180
+		 <input type="radio" name="size" value="319"> 30х190     
+		<input type="radio" name="size" value="320"> 30х200</p>
+		<p> <input type="radio" name="size" value="322"> 30х220
+		 <input type="radio" name="size" value="324"> 30х240
+		 <input type="radio" name="size" value="326"> 30х260
+		 <input type="radio" name="size" value="328"> 30х280   
+		<input type="radio" name="size" value="330"> 30х300</p>
+		 -->
+		<HR> 
+		<p>Количество(1-999): </p>
+		<p><input pattern="[0-9]{1,3}" type="text" name="count" required> </p>   
+		<p>
+			<input type="submit" value="Добавить в кошык">
+		</p>
+	</form>
+
+</body>
+</html>

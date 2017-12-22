@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registartion</title>
+</head>
+<body>
+<form action="RegistrationServlet" method="POST">
+		
+		<table cellspacing="10" ">
+		<tr>
+		<td align="right"> ФИО:</td>
+		<td> <input type="text" name="name" placeholder="Михалыч Х.Х." required></td>
+		 </tr>
+		<tr>
+		<td align="right">e-mail:</td>
+		<td><input type="text" name="email" placeholder="пушка@михалыч.бай" required></td>
+		 </tr>
+		 <tr>
+		<td align="right">Номер телефона: </td>
+		<td> <input type="text" name="phone" size="11" placeholder="+37529-2808170" required></td>
+		 </tr>
+		 <tr>
+		<td align="right">Адрес:</td>
+		<td><input type="text" name="adres" size="40" placeholder="г.Лида, ул.Советская 70, 2йэтаж, ОГС" required></td>
+		 </tr>
+		 <tr>
+		<td align="right">Серия и номер паспорта:</td>
+		<td><input type="text" name="passport" size="9" placeholder="AB 1234567" required></td>
+		 </tr>
+		  <tr>
+		<td align="right">Пароль:</td>
+		<td><input type="text" name="parol" size="9" placeholder="1234567" required></td>
+		 </tr>
+
+		</table>
+		
+		<table cellspacing="10">
+		<td> <input type="submit" value="Зарегистрироваться"></td>
+
+		</table>
+</form>
+
+</body>
+</html>
