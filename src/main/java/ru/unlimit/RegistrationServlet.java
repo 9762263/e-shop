@@ -20,12 +20,11 @@ public class RegistrationServlet extends HttpServlet {
 
     public RegistrationServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("Issue.html");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,7 +45,7 @@ public class RegistrationServlet extends HttpServlet {
 		db.insertUser(name,email,phone,adres,passport,parol);
 
 		out.println("Гратуляцыя, "+name+" ! Вам больше не нужно постоянно вводить данные");
-		//response.sendRedirect("Issue.html");
+		
 		
 		ArrayList<Radiator> list;
 		String id=session.getId();
@@ -70,11 +69,23 @@ public class RegistrationServlet extends HttpServlet {
 			
 		}
 		
-		//User user=new User(name,email,phone,adres,passport,parol);
-		//out.println("<form action='RegistrationServlet' method='POST'");
-		out.println("<p><input type='submit' value='Оформить заказ'></p>");
-		//out.println("</form>");
+		User user=new User(name,email,phone,adres,passport,parol);
+		
+		int idSF = db.getLastidSF();
+		
+		++idSF;
+		
+		SzotFaktura.createPDF(idSF,user.name, "Sovetskaya 70","XXX",user.phone, list);
+		for(Radiator rad1:list){
+			db.insertRadiator(rad1.getType()+"-"+rad1.getSize(),rad1.getPrice(),rad1.getCount(),rad1.getCount()*rad1.getPrice(),idSF);	
+		}
+		
+		db.insertBuyer(user.name, user.email, user.phone,"Sovetskaya 70" , "XXX",String.valueOf(idSF));
+		
+		out.println("<a href='Type.html'><p>В начало </p></a>");
+		session.invalidate();
 		out.close();
+		System.out.println("м-д POST в RegistrationServlet"+id);
 		
 	}
 

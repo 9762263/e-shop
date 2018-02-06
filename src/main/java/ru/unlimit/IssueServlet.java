@@ -45,7 +45,7 @@ public class IssueServlet extends HttpServlet {
 		}catch(NullPointerException e){
 			System.out.println("ошибка");
 		}
-		
+		System.out.println("м-д POST в IssueServlet"+request.getSession().getId());	
 	}
 
 }

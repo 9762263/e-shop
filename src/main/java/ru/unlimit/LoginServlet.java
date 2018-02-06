@@ -35,7 +35,9 @@ public class LoginServlet extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		Cookie cookie = new Cookie("email", email);
+		cookie.setMaxAge(300);//время жизни куки в секундах!
 		response.addCookie(cookie);
+		
 		
 		PrintWriter out= response.getWriter();
 		
@@ -79,10 +81,18 @@ public class LoginServlet extends HttpServlet {
 		
 		++idSF;
 		
-		SzotFaktura.createPDF(idSF,"Ivan Ebanov", "Sovetskaya 70","XXX",user.phone, list);
-		out.println("<br><a href='Type.html'>Тута будет кнопка по которой формируется пдф и отправляется письмо</a>");
+		SzotFaktura.createPDF(idSF,user.name, "Sovetskaya 70","XXX",user.phone, list);
+		for(Radiator rad1:list){
+			db.insertRadiator(rad1.getType()+"-"+rad1.getSize(),rad1.getPrice(),rad1.getCount(),rad1.getCount()*rad1.getPrice(),idSF);	
+		}
+		
+		db.insertBuyer(user.name, user.email, user.phone,"Sovetskaya 70" , "XXX",String.valueOf(idSF));
+		
+		out.println("<a href='Type.html'><p>В начало </p></a>");
 		session.invalidate();
 		out.close();
+		
+		System.out.println("м-д POST в LoginServlet"+id);
 	}
 
 }

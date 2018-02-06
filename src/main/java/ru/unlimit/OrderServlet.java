@@ -76,14 +76,22 @@ public class OrderServlet extends HttpServlet {
 						+"<td align=left >"+user.phone+"</td></tr>"
 						+ "</table>");
 		
+		
+		
 		int idSF = db.getLastidSF();
 		
 		++idSF;
-		SzotFaktura.createPDF(idSF,"Ivan Ebanov", "Sovetskaya 70","XXX",user.phone, list);
+		SzotFaktura.createPDF(idSF,user.name, "Sovetskaya 70","XXX",user.phone, list);
+		for(Radiator rad1:list){
+			db.insertRadiator(rad1.getType()+"-"+rad1.getSize(),rad1.getPrice(),rad1.getCount(),rad1.getCount()*rad1.getPrice(),idSF);	
+		}
+		
+		db.insertBuyer(user.name, user.email, user.phone,"Sovetskaya 70" , "XXX",String.valueOf(idSF));
 		
 		out.println("<a href='Type.html'><p>В начало </p></a>");
 		session.invalidate();
 		out.close();
+		System.out.println("м-д GET в OrderServlet"+id);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

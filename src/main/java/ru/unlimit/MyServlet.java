@@ -21,7 +21,8 @@ import javax.servlet.http.HttpSession;
 public class MyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 			
-	public static ArrayList<Radiator> busketList;
+	public static ArrayList<Radiator> busketList=new ArrayList<Radiator>();
+	
 	protected static Map<String,ArrayList<Radiator>> users =new ConcurrentHashMap<>();
 	
 	/*
@@ -44,6 +45,8 @@ public class MyServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		ArrayList<Radiator> busketList=new ArrayList<Radiator>();
+		
 		String type=request.getParameter("type");
 		String size=request.getParameter("size");
 		String count=request.getParameter("count");
@@ -60,7 +63,10 @@ public class MyServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(60*60*24*7);//время сессии в секундах
+		
+		session.setAttribute("korzina", busketList);
 		String id=session.getId();
+
 		busketList=users.get(id);
 		if(busketList==null){
 		ArrayList<Radiator> list3= new ArrayList<>();
@@ -100,9 +106,9 @@ public class MyServlet extends HttpServlet {
 				+ "<input type='submit' value='Оформить'>"
 				+ "</form>  </td></tr></table>");
 		
+
 		out.close();
-		System.out.println("отработал метод GET");
-		System.out.println(System.getProperty("user.dir"));		
+		System.out.println("м-д GET в MyServlet"+id);		
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -114,6 +120,7 @@ public class MyServlet extends HttpServlet {
 		
 		String id=session.getId();
 		busketList=users.get(id);
+		
 		Buyer b1=new Buyer(request.getParameter("name"),request.getParameter("email"),request.getParameter("phone"),
 				request.getParameter("adres"),request.getParameter("passport"));
 		
@@ -121,9 +128,9 @@ public class MyServlet extends HttpServlet {
 		JDBCExample db= new JDBCExample();
 
 		int idSF = db.getLastidSF();
-		System.out.println(idSF);
+		
 		++idSF;
-		System.out.println(idSF);
+		
 		for(Radiator rad1:busketList){
 			db.insertRadiator(rad1.getType()+"-"+rad1.getSize(),rad1.getPrice(),rad1.getCount(),rad1.getCount()*rad1.getPrice(),idSF);	
 		}
@@ -145,9 +152,9 @@ public class MyServlet extends HttpServlet {
 		out.println("<br><a href='Type.html'>В начало</a>");
 		session.invalidate();
 		out.close();
-		System.out.println(users);
-		System.out.println("отработал метод POST");
-		users.remove(id);
+	//	System.out.println(users);
+		System.out.println("м-д POST в MyServlet"+id);
+	//	users.remove(id);
 		
 	}
 }
